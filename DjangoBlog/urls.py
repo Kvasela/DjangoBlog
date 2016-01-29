@@ -17,8 +17,10 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from home.views import HomeView
+from about.views import AboutView
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name="home"),
+    url(r'^about/', AboutView.as_view(), name="about"),
     url(r'^admin/', include(admin.site.urls)),
 ]
