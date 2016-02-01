@@ -15,7 +15,7 @@ class ArticleAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         "slug": ("title",)
     }
-    list_filter = ("publish", "modified")
+    list_filter = ("publish", "created", "modified")
 
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Tag)
