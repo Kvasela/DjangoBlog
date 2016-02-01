@@ -22,16 +22,16 @@ class Article(models.Model):
     slug = models.SlugField(max_length=200, unique=True, verbose_name="посилання")
     excerpt = models.TextField(verbose_name="коротикий зміст статті")
     article = models.TextField(verbose_name="повний зміст статті")
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True, verbose_name="дата публікації")
+    modified = models.DateTimeField(auto_now=True, verbose_name="дата редагування")
     publish = models.BooleanField(default=True, verbose_name="опублікована")
     tags = models.ManyToManyField(Tag, verbose_name="теги")
 
     objects = ArticleQuerySet.as_manager()
 
     class Meta:
-        verbose_name = "статтю блогу"
-        verbose_name_plural = "статті блогу"
+        verbose_name = "статтю"
+        verbose_name_plural = "статті"
 
     def __str__(self):
         return self.title
