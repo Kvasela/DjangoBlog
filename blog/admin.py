@@ -5,11 +5,14 @@ from .models import Article, Tag
 class ArticleAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ('title', 'article', 'slug')
+            'fields': ('title',)
          }),
         ('Короткий зміст статті', {
             'classes': ('collapse',),
-            'fields': ('excerpt',),
+            'fields': ('excerpt',)
+         }),
+        (None, {
+            'fields': ('article', 'slug', 'tags', 'publish',)
          }),
     )
     prepopulated_fields = {

@@ -21,4 +21,5 @@ from about.views import AboutView
 urlpatterns = [
     url(r'^about/', AboutView.as_view(), name="about"),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
