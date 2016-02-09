@@ -20,9 +20,14 @@ class ArticleView(DetailView):
 
 
 class TagView(ListView):
-    template_name = "index.html"
+    template_name = "articles_by_tag.html"
 
     def get_queryset(self):
         slug = self.kwargs['tag']
         tag = get_object_or_404(Tag, slug=slug)
         return Article.objects.filter(tags=tag.id)
+
+    def get_context_data(self, **kwargs):
+        context = super(TagView, self).get_context_data(**kwargs)
+        context['tag'] = self.kwargs['tag']
+        return context
