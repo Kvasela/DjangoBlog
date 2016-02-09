@@ -1,11 +1,41 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
-	<title>
-		{% block title %}{% endblock %}
-	</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/cover.css" %}">
 </head>
-<body>
-	{% block content %}{% endblock%}
+<body cz-shortcut-listen="true">
+  <div class="wrapper">
+    <header>
+      <div class="cover-container">
+          <h3 class="masthead-brand" ><a href="/">ПрАгмАтікА</a></h3>
+          <nav>
+              <ul class="nav masthead-nav">
+              {% block menu %}
+                <li><a href="{% url 'home' %}">Головна</a></li>
+                <li><a href="{% url 'about' %}">Про мене</a></li>
+              {% endblock menu %}
+                <li><span class="btn btn-lg" style="padding:0px;"><i class="glyphicon glyphicon-search"></i></span></li>
+              </ul>
+          </nav>
+          <div class="inner"></div>
+      </div>
+    </header>
+    <div class="cover-container">
+        {% block content %}{% endblock content %}
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="cover-container">
+        <span style="position:relative; top:35px;">Зроблено на  <a href="https://www.djangoproject.com/" style="font-weight: 900;">Django</a>.</span>
+    </div>
+  </footer>
 </body>
 </html>

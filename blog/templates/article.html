@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+    {{title}}
+{% endblock title %}
+{% block menu %}
+    <li><a href="{% url 'home' %}">Головна</a></li>
+    <li><a href="{% url 'about' %}">Про мене</a></li>
+{% endblock menu %}
+{% block content %}
+    {% autoescape off %}
+        <div class="inner">
+            <h1>{{object.title}}</h1>
+            {{object.article}}
+        </div>
+    {% endautoescape %}
+{% endblock content %}

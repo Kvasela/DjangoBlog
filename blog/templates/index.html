@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Головна{% endblock title %}
+{% block menu %}
+    <li class="active"><a href="{% url 'home' %}">Головна</a></li>
+    <li><a href="{% url 'about' %}">Про мене</a></li>
+{% endblock menu %}
+{% block content %}
+    {% autoescape off %}
+        {% for o in object_list %}
+            <div class="inner">
+            <h1><a href="{% url 'article' slug=o.slug %}" class="title">{{o.title}}</a></h1>
+            {{o.excerpt}}
+            <hr/>
+            <a href="{% url 'article' slug=o.slug%}" >Читать дальше →</a>
+            <div style="float:right;">
+                {% for tag in o.tags.all %}
+                    <span class="badge badge-info"><a href="{% url 'tag' tag=tag %}">{{tag}}</a></span>
+                {% endfor %}
+            </div>
+            </div>
+        {% endfor %}
+    {% endautoescape %}
+{% endblock content %}
