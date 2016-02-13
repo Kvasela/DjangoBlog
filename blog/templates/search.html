@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+{% block title %}
+    Пошук
+{% endblock title %}
+{% block menu %}
+    <li><a href="{% url 'home' %}">Головна</a></li>
+    <li><a href="{% url 'about' %}">Про мене</a></li>
+{% endblock menu %}
+{% block alert %}
+    {% if not object_list %}
+        <div class="inner">
+            <div class="alert alert-danger" role="alert">
+                <h4>За параметрами пошуку: <strong>"{{q}}"</strong></h4>
+                <h4>Нічого не знайдено!</h4>
+            </div>
+        </div>
+    {% else %}
+        <!-- <div class="inner"> -->
+        <div class="alert alert-done">
+            <h4>За параметрами пошуку: <strong>{{q}}</strong></h4>
+            <h4>Були знайдені наступні статті</h4>
+        </div>
+        <!-- </div> -->
+    {% endif %}
+{% endblock alert %}
+{% block pagination %}
+  {% if is_paginated %}
+    <div class="inner">
+      <nav>
+        <ul class="pager">
+          <li class="previous{% if not page_obj.has_previous %} disabled {% endif %}">
+            <a {% if page_obj.has_previous %}href="search?q={{q}}&page={{page_obj.previous_page_number}}"{% endif %}><span aria-hidden="true">&larr;</span> Попередня</a>
+          </li>
+          <li class="next{% if not page_obj.has_next %} disabled {% endif %}">
+            <a {% if page_obj.has_next %}href="search?q={{q}}&page={{page_obj.next_page_number}}"{% endif %}>Наступна <span aria-hidden="true">&rarr;</span></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  {% endif %}
+{% endblock pagination %}

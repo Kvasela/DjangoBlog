@@ -15,27 +15,78 @@
   <div class="wrapper">
     <header>
       <div class="cover-container">
-          <h3 class="masthead-brand" ><a href="/">ПрАгмАтікА</a></h3>
+          <h3 class="masthead-brand" ><a href="{% url 'home' %}">ПрАгмАтікА</a></h3>
           <nav>
               <ul class="nav masthead-nav">
-              {% block menu %}
-                <li><a href="{% url 'home' %}">Головна</a></li>
-                <li><a href="{% url 'about' %}">Про мене</a></li>
-              {% endblock menu %}
-                <li><span class="btn btn-lg" style="padding:0px;"><i class="glyphicon glyphicon-search"></i></span></li>
+                {% block menu %}
+                  <li><a href="{% url 'home' %}">Головна</a></li>
+                  <li><a href="{% url 'about' %}">Про мене</a></li>
+                {% endblock menu %}
+                <li>
+                  <form method="get" action="{% url 'search' %}" id="search-form" class="">
+                    <div id="search-wrap">
+                      <input name="q" id="search-field" value="" placeholder="Пошук" autocomplete="off" onkeydown="search_form(this);">
+                    </div>
+                    <a href="javascript:void(0);" class="icon-search" id="open-search-btn"><i class="glyphicon glyphicon-search"></i></a>
+                  </form>
+                </li>
               </ul>
           </nav>
-          <div class="inner"></div>
       </div>
     </header>
     <div class="cover-container">
+        {% block alert %}{% endblock alert%}
         {% block content %}{% endblock content %}
+        {% block pagination %}
+          {% if is_paginated %}
+            <div class="inner">
+              <nav>
+                <ul class="pager">
+                  <li class="previous{% if not page_obj.has_previous %} disabled {% endif %}">
+                    <a {% if page_obj.has_previous %}href="?page={{page_obj.previous_page_number}}"{% endif %}><span aria-hidden="true">&larr;</span> Попередня</a>
+                  </li>
+                  <li class="next{% if not page_obj.has_next %} disabled {% endif %}">
+                    <a {% if page_obj.has_next %}href="?page={{page_obj.next_page_number}}"{% endif %}>Наступна <span aria-hidden="true">&rarr;</span></a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          {% endif %}
+        {% endblock pagination %}
     </div>
   </div>
   <footer class="footer">
     <div class="cover-container">
-        <span style="position:relative; top:35px;">Зроблено на  <a href="https://www.djangoproject.com/" style="font-weight: 900;">Django</a>.</span>
+        <span class="footer-text">Зроблено на  
+          <a href="https://www.djangoproject.com/">
+            <img width="49" height="49" src="{% static 'icon/django-logo-positive.svg' %}" alt="Django">
+          </a>
+        </span>
     </div>
   </footer>
+<script>
+  function search_form(e) {
+    if (event.keyCode == 13) {
+      document.forms['search-form'].submit();
+    }
+  }
+  function activate_search_form(e) {
+    var searchForm = document.getElementById('search-form');
+    if( searchForm.className === 'active'){
+      searchForm.className = '';
+    }
+    else{
+      searchForm.className = 'active';
+      document.getElementById('search-field').focus();
+    }
+  }
+  function search_field_focus_out(e) {
+    setTimeout(function () {
+      document.getElementById('search-form').className = '';
+    }, 100);
+  }
+document.getElementById('open-search-btn').addEventListener('click', activate_search_form);
+document.getElementById('search-field').addEventListener('focusout', search_field_focus_out);
+</script>
 </body>
 </html>
