@@ -1,5 +1,4 @@
 from django.db import models
-# from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
 
@@ -20,7 +19,7 @@ class ArticleQuerySet(models.QuerySet):
 
 
 class Article(models.Model):
-    title = models.CharField(max_length=200, verbose_name="заголовок")
+    title = models.CharField(max_length=200, unique=True, verbose_name="заголовок")
     slug = models.SlugField(max_length=200, unique=True, verbose_name="посилання")
     excerpt = RichTextUploadingField(verbose_name="коротикий зміст статті")
     article = RichTextUploadingField(verbose_name="повний зміст статті")
