@@ -8,7 +8,9 @@
     {% autoescape off %}
         {% for o in object_list %}
             <div class="inner">
-                <h1><a href="{% url 'article' slug=o.slug %}" class="title">{{o.title}}</a></h1>
+                <h1 class="title">
+                    <a href="{% url 'article' slug=o.slug %}" class="title">{{o.title}}</a>
+                </h1>
                 {{o.excerpt}}
                 <hr/>
                 <a href="{% url 'article' slug=o.slug%}" >Читать дальше →</a>

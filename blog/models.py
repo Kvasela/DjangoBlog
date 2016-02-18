@@ -15,7 +15,7 @@ class Tag(models.Model):
 
 class ArticleQuerySet(models.QuerySet):
     def published(self):
-        return self.filter(publish=True)
+        return self.filter(publish=True).order_by("-created")
 
 
 class Article(models.Model):

@@ -15,12 +15,9 @@
             </div>
         </div>
     {% else %}
-        <!-- <div class="inner"> -->
         <div class="alert alert-done">
-            <h4>За параметрами пошуку: <strong>{{q}}</strong></h4>
-            <h4>Були знайдені наступні статті</h4>
+            <h4>Результати пошуку: <strong>{{q}}</strong></h4>
         </div>
-        <!-- </div> -->
     {% endif %}
 {% endblock alert %}
 {% block pagination %}
