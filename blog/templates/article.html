@@ -10,6 +10,17 @@
     {% autoescape off %}
         <div class="inner">
             <h1 class="title">{{object.title}}</h1>
+            <div class="inner">
+                <div class="pub_date">
+                  <span>Дата публікації:</span>
+                  <strong>{{object.created|date:'d M. Y'}}</strong>
+                </div>
+              <div class="tags">
+                  {% for tag in object.tags.all %}
+                      <span class="badge"><a class="{{tag|lower}}" href="{% url 'tag' tag=tag %}">{{tag}}</a></span>
+                  {% endfor %}
+              </div>
+          </div>
             {{object.article}}
         </div>
     {% endautoescape %}
