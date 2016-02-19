@@ -5,21 +5,27 @@
     <li><a href="{% url 'about' %}">Про мене</a></li>
 {% endblock menu %}
 {% block content %}
-    {% autoescape off %}
-        {% for o in object_list %}
-            <div class="inner">
-                <h1 class="title">
-                    <a href="{% url 'article' slug=o.slug %}" class="title">{{o.title}}</a>
-                </h1>
-                {{o.excerpt}}
-                <hr/>
-                <a href="{% url 'article' slug=o.slug%}" >Читать дальше →</a>
-                <div class="tags">
-                    {% for tag in o.tags.all %}
-                        <span class="badge"><a href="{% url 'tag' tag=tag %}">{{tag}}</a></span>
-                    {% endfor %}
-                </div>
+  {% autoescape off %}
+    {% for o in object_list %}
+      <div class="inner">
+          <h1 class="title">
+              <a href="{% url 'article' slug=o.slug %}">{{o.title}}</a>
+          </h1>
+          <div class="inner">
+            <div class="pub_date">
+              <span>Дата публікації:</span>
+              <strong>{{o.created|date:'d M. Y'}}</strong>
             </div>
-        {% endfor %}
-    {% endautoescape %}
+              <div class="tags">
+                  {% for tag in o.tags.all %}
+                      <span class="badge"><a class="{{tag|lower}}" href="{% url 'tag' tag=tag %}">{{tag}}</a></span>
+                  {% endfor %}
+              </div>
+          </div>
+          {{o.excerpt}}
+          <hr/>
+          <a href="{% url 'article' slug=o.slug%}" >Читать дальше →</a>
+      </div>
+    {% endfor %}
+  {% endautoescape %}
 {% endblock content %}

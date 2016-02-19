@@ -1,3 +1,13 @@
+/* style tags */
+.django, .django:hover { color: #135139; }
+.css, .css:hover { color: #A6B219; }
+.other, .other:hover { color: #808080; }
+.python, .python:hover { color: #276DE1; }
+.flask, .flask:hover { color: #800000; }
+.javascript, .javascript:hover { color: #FF8B25; }
+
+
+
 .alert-done {
   color: gray;
   background-color: lavender;
@@ -178,9 +188,18 @@ p {
   text-indent: 25px;
 }
 
+.badge {
+  background-color: #fff;
+}
+
+.pub_date {
+  display: inline-block;
+  color: #778899;
+}
+/*.pub_date > span { color: #778899; }*/
+
 .badge > a {
   text-decoration: none;
-  color: white;
 }
 
 .cover-container {
@@ -193,6 +212,9 @@ p {
   padding: 21px;
 }
 
+.inner > .inner {
+  padding-top: 0px;
+}
 
 /*
  * Header
