@@ -15,8 +15,15 @@
   <div class="wrapper">
     <header>
       <div class="cover-container">
+        <div class="navbar-header">
           <h3 class="masthead-brand" ><a href="{% url 'home' %}">ПрАгмАтікА</a></h3>
-          <nav>
+          <button type="button" class="navbar-toggle" id="navbar_toggle">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+          <nav class="nav-menu" id="masthead_menu">
               <ul class="nav masthead-nav">
                 {% block menu %}
                   <li><a href="{% url 'home' %}">Головна</a></li>
@@ -85,8 +92,17 @@
       document.getElementById('search-form').className = '';
     }, 100);
   }
+  function active_navbar_toggle(e) {
+    var menu = document.getElementById('masthead_menu');
+    if(menu.className === 'nav-menu') {
+      menu.className = 'nav-menu active';
+    } else {
+      menu.className = 'nav-menu';
+    }
+  }
 document.getElementById('open-search-btn').addEventListener('click', activate_search_form);
 document.getElementById('search-field').addEventListener('focusout', search_field_focus_out);
+document.getElementById('navbar_toggle').addEventListener('click' , active_navbar_toggle);
 </script>
 </body>
 </html>
