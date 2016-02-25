@@ -8,16 +8,16 @@
 {% endblock menu %}
 {% block alert %}
     {% if not object_list %}
-        <div class="inner">
-            <div class="alert alert-danger" role="alert">
-                <h4>За параметрами пошуку: <strong>"{{q}}"</strong></h4>
-                <h4>Нічого не знайдено!</h4>
-            </div>
-        </div>
+      <div class="alert-search">
+        <h4><strong>Нічого не знайдено для:</strong> "{{q}}"</h4>
+        {# <h4>Нічого не знайдено!</h4> #}
+        <hr class="faild" />
+      </div>
     {% else %}
-        <div class="alert alert-done">
-            <h4>Результати пошуку: <strong>{{q}}</strong></h4>
-        </div>
+      <div class="alert-search">
+        <h4><strong>Результати пошуку:</strong> "{{q}}"</h4>
+        <hr/>
+      </div>
     {% endif %}
 {% endblock alert %}
 {% block pagination %}

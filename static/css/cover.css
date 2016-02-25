@@ -30,12 +30,12 @@
 }
 /* end style tags*/
 
-.alert-done {
+.alert-search {
   color: gray;
-  background-color: lavender;
-  border-color: gainsboro;
   margin-top: 15px;
   margin-bottom: -21px;
+  margin-left: 21px;
+  margin-right: 21px;
 }
 
 /*Search Form */
@@ -136,7 +136,7 @@ a:hover {
   -webkit-background-size: 200.22% auto;
   -moz-background-size: 200.22% auto;
   background-position: -0% 0;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, #f8e1d3 50%);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, #f8e1d3 85%);
   transition: background-position 0.5s ease-out;
   -webkit-transition: background-position 0.5s ease-out;
 }
@@ -213,8 +213,33 @@ hr {
   border-width: 1px;
 }
 
+hr.faild {
+  border-top: 1px solid #eee;
+  border-bottom-color: #F08080;
+  border-width: 1px;
+}
+
+ .inner p img {
+  max-width: -webkit-calc(100% - 21px);
+  max-width: -moz-calc(100% - 21px);
+  max-width: calc(100% - 21px);
+  width: -webkit-calc(100% - 21px);
+  width: -moz-calc(100% - 21px);
+  width: calc(100% - 21px);
+  height: 100%;
+  object-fit: scale-down;
+  object-fit: -o-scale-down;
+} 
+
 p {
-  text-indent: 25px;
+  text-indent: 21px;
+
+}
+pre, 
+pre code {
+  overflow-x: scroll;
+  word-wrap: normal;
+  white-space: pre;
 }
 
 .pub_date {
@@ -236,9 +261,16 @@ p {
   padding: 21px;
 }
 
+.inner.paginate,
+.paginate .pager {
+  padding-top: 0px;
+  margin: 0px;
+}
+
 .inner > .inner {
   padding-top: 0px;
 }
+
 
 /*
  * Header
@@ -294,6 +326,13 @@ p {
   border-bottom-color: #fff;
 }
 
+@media (max-width: 480px) and (orientation: portrait) {
+  .tags {
+    float: left;
+    display: block;
+    position: absolute;
+  }
+}
 /*
  * Affix and center
  */
@@ -301,7 +340,7 @@ p {
 
   /**/
   .nav-menu {
-    margin-top: 18px;
+    margin-top: 10px;
     margin-left: -10px;
     margin-right: -10px;
     padding-left: 10px;
@@ -315,6 +354,9 @@ p {
   .masthead-nav > li {
     display: block;
     background-color: #778899;
+    margin-bottom: -0.25em;
+    margin-top: -0.25em;
+    height: 50px;
   }
 
   .masthead-nav > li + li {
@@ -376,7 +418,7 @@ p {
     right: 0px;
     position: absolute;
     background-color: currentColor;
-    margin-top: 10px;
+    margin-top: 15px;
     margin-bottom: 10px;
   }
 
@@ -422,11 +464,18 @@ p {
   }
 
   header {
-    height: 75px;
+    height: 65px;
   }
 
   header > .cover-container {
-    top: 10px;
+    top: 0px;
+    height: 65px;
+    padding-top: 9px;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    color: rgba(255, 255, 255, .75);
+    background-color: #778899;
   }
 
 }
@@ -453,7 +502,7 @@ p {
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 700px;
+    width: 768px;
   }
 
 }

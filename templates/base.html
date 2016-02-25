@@ -30,7 +30,7 @@
                   <li><a href="{% url 'about' %}">Про мене</a></li>
                 {% endblock menu %}
                 <li>
-                  <form method="get" action="{% url 'search' %}" id="search-form" class="">
+                  <form method="get" action="{% url 'search' %}" id="search-form" class="" onsubmit="return false;">
                     <div id="search-wrap">
                       <input name="q" id="search-field" value="" placeholder="Пошук" autocomplete="off" onkeydown="search_form(this);">
                     </div>
@@ -46,7 +46,7 @@
         {% block content %}{% endblock content %}
         {% block pagination %}
           {% if is_paginated %}
-            <div class="inner">
+            <div class="inner paginate">
               <nav>
                 <ul class="pager">
                   <li class="previous{% if not page_obj.has_previous %} disabled {% endif %}">
@@ -74,23 +74,34 @@
 <script>
   function search_form(e) {
     if (event.keyCode == 13) {
-      document.forms['search-form'].submit();
+      validate_submit_search_form(e);
     }
   }
+  function validate_submit_search_form(e) {
+    var search_field = document.getElementById('search-field');
+    search_field.value = search_field.value.trim();
+    if (search_field.value.length > 0) {
+      document.forms['search-form'].submit();
+    }
+    return false;
+  }
   function activate_search_form(e) {
-    var searchForm = document.getElementById('search-form');
-    if( searchForm.className === 'active'){
-      searchForm.className = '';
+    var search_form = document.getElementById('search-form');
+    if( search_form.className === 'active'){
+      var search_field = document.getElementById('search-field');
+      if (validate_submit_search_form(e)) {
+        search_form.className = '';
+      }
     }
     else{
-      searchForm.className = 'active';
+      search_form.className = 'active';
       document.getElementById('search-field').focus();
     }
   }
   function search_field_focus_out(e) {
     setTimeout(function () {
       document.getElementById('search-form').className = '';
-    }, 100);
+    }, 196);
   }
   function active_navbar_toggle(e) {
     var menu = document.getElementById('masthead_menu');
@@ -100,9 +111,9 @@
       menu.className = 'nav-menu';
     }
   }
-document.getElementById('open-search-btn').addEventListener('click', activate_search_form);
-document.getElementById('search-field').addEventListener('focusout', search_field_focus_out);
-document.getElementById('navbar_toggle').addEventListener('click' , active_navbar_toggle);
+  document.getElementById('open-search-btn').addEventListener('click', activate_search_form);
+  document.getElementById('search-field').addEventListener('focusout', search_field_focus_out);
+  document.getElementById('navbar_toggle').addEventListener('click' , active_navbar_toggle);
 </script>
 </body>
 </html>
