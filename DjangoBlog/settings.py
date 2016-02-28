@@ -126,16 +126,46 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_ROOT = '/'
-# STATIC_ROOT = os.path.join(BASE_DIR, "static")
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 CKEDITOR_UPLOAD_PATH = "uploads/"
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'full',
-    },
-}
 CKEDITOR_ALLOW_NONIMAGE_FILES = False
-CKEDITOR_BROWSE_SHOW_DIRS = True
+CKEDITOR_BROWSE_SHOW_DIRS = False
+CKEDITOR_CONFIGS = {
+    "default": {
+        "removePlugins": "stylesheetparser",
+        'allowedContent': True,
+        'codeSnippet_theme': 'googlecode',
+        'extraPlugins': ','.join(['codesnippet']),
+        'toolbar_Full': [
+            [
+                'Styles', 'Format', 'Bold', 'Italic',
+                'Underline', 'Strike', 'Subscript',
+                'Superscript', '-', 'RemoveFormat'
+            ],
+
+            [ 'Image', 'Flash', 'Table', 'HorizontalRule' ],
+            [ 'TextColor', 'BGColor' ],
+            [ 'sourcearea', 'SpecialChar' ],
+            [ 'Link', 'Unlink', 'Anchor' ],
+            [
+                'NumberedList', 'BulletedList',
+                '-', 'Outdent', 'Indent',
+                '-', 'Blockquote', 'CreateDiv',
+                '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+                '-', 'BidiLtr', 'BidiRtl', 'Language'
+            ],
+            [
+                'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
+                '-', 'Undo', 'Redo'
+            ],
+            [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ],
+            [ 'Maximize', 'ShowBlocks'],
+            [ 'Source', 'CodeSnippet', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ]
+        ],
+    }
+}

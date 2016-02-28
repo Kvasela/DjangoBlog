@@ -6,7 +6,7 @@
 
 .css,
 .css:hover {
-  color: #FDAA27;
+  color: #DFA30F;
 }
 
 .other,
@@ -130,7 +130,14 @@ a:hover {
   color: #DF6921;
   text-decoration: none;
 }
-
+h1,
+h2,
+h3,
+h4,
+h5,
+.title {
+  font-family: "PhilosopherRegular";
+}
 .title a {
   background-size: 200.22% auto;
   -webkit-background-size: 200.22% auto;
@@ -237,9 +244,12 @@ p {
 }
 pre, 
 pre code {
-  overflow-x: scroll;
+  overflow-x: unset;
   word-wrap: normal;
   white-space: pre;
+}
+.hljs {
+  background-color: inherit !important;
 }
 
 .pub_date {
@@ -276,15 +286,15 @@ pre code {
  * Header
  */
 .masthead-brand {
-  margin-top: 10px;
+  margin-top: 8px;
   margin-bottom: 10px;
 }
 
 .masthead-brand > a {
   color: rgba(255, 255, 255, .75);
-  font-weight: 900;
-  font-style: italic;
-  font-family: Georgia, serif;
+  font-weight: 100;
+  font-size: 28pt;
+  font-family: "CalligraphMedium";
   text-decoration: none;
 }
 
@@ -340,7 +350,7 @@ pre code {
 
   /**/
   .nav-menu {
-    margin-top: 10px;
+    margin-top: 3px;
     margin-left: -10px;
     margin-right: -10px;
     padding-left: 10px;
@@ -403,6 +413,7 @@ pre code {
   /**/
   .masthead-brand {
     width: auto;
+    margin-top: 4px;
   }
 
   .masthead-nav {
@@ -505,4 +516,24 @@ pre code {
     width: 768px;
   }
 
+}
+
+@font-face {
+    font-family: "CalligraphMedium";
+    src: url("../fonts/CalligraphMedium/CalligraphMedium.eot");
+    src: url("../fonts/CalligraphMedium/CalligraphMedium.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/CalligraphMedium/CalligraphMedium.woff") format("woff"),
+    url("../fonts/CalligraphMedium/CalligraphMedium.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "PhilosopherRegular";
+    src: url("../fonts/PhilosopherRegular/PhilosopherRegular.eot");
+    src: url("../fonts/PhilosopherRegular/PhilosopherRegular.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/PhilosopherRegular/PhilosopherRegular.woff") format("woff"),
+    url("../fonts/PhilosopherRegular/PhilosopherRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
 }
