@@ -19,7 +19,7 @@
               <div class="tags">
                 <i class="glyphicon glyphicon-tag"></i>
                 {% for tag in o.tags.all %}
-                    <a class="{{tag|lower}}" href="{% url 'tag' tag=tag %}">{{tag|upper}}</a>
+                    <a class="tag-{{tag|lower}}" href="{% url 'tag' tag=tag %}">{{tag|upper}}</a>
                 {% endfor %}
               </div>
           </div>

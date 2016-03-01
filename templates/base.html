@@ -34,7 +34,7 @@
                 <li>
                   <form method="get" action="{% url 'search' %}" id="search-form" class="" onsubmit="return false;">
                     <div id="search-wrap">
-                      <input name="q" id="search-field" value="" placeholder="Пошук" autocomplete="off" onkeydown="search_form(this);">
+                      <input name="q" id="search-field" value="" placeholder="Пошук" autocomplete="off" onkeydown="search_form(event);">
                     </div>
                     <a href="javascript:void(0);" class="icon-search" id="open-search-btn"><i class="glyphicon glyphicon-search"></i></a>
                   </form>
@@ -73,6 +73,7 @@
         </span>
     </div>
   </footer>
+  <script src="{% static "admin/js/vendor/jquery/jquery.min.js" %}"></script>
   <script src="{% static "ckeditor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js" %}"></script>
   <script src="{% static "js/cover.js" %}"></script>
 </body>

@@ -1,8 +1,8 @@
 (function(){
   /*Search form into main menu*/
-  function search_form(e) {
+  document.search_form = function(e) {
     // Send on enter to validate
-    if (event.keyCode == 13) {
+    if ((e || window.event).keyCode === 13) {
       validate_submit_search_form(e);
     }
   }
@@ -51,7 +51,8 @@
   }
 
   document.getElementById('open-search-btn').addEventListener('click', activate_search_form);
-  document.getElementById('search-field').addEventListener('focusout', search_field_focus_out);
+  // document.getElementById('search-field').addEventListener('focusout', 'blur', search_field_focus_out);
+  document.getElementById('search-field').addEventListener('blur', search_field_focus_out);
   document.getElementById('navbar_toggle').addEventListener('click' , active_navbar_toggle);
 
   /*Activate highlight.pack.js*/
