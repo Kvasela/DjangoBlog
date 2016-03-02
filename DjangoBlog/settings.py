@@ -35,12 +35,14 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'about',
     'blog',
     'ckeditor',
     'ckeditor_uploader',
+    'disqus',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -169,3 +171,7 @@ CKEDITOR_CONFIGS = {
         ],
     }
 }
+
+SITE_ID = 1
+DISQUS_API_KEY = ''
+DISQUS_WEBSITE_SHORTNAME = ''

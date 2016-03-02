@@ -25,4 +25,9 @@
             {{object.article}}
         </div>
     {% endautoescape %}
+    <p>
+      {% load disqus_tags %}
+      {% set_disqus_title object.title %}
+      {% disqus_show_comments %}
+    </p>
 {% endblock content %}

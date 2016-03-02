@@ -71,9 +71,6 @@
   width: 430px;
   height: 65px;
   overflow: hidden;
-  -webkit-transition: opacity 0.3s linear;
-  -moz-transition: opacity 0.3s linear;
-  -o-transition: opacity 0.3s linear;
   transition: opacity 0.3s linear;
   opacity: 0;
   pointer-events: none;
@@ -95,16 +92,13 @@
   top: 20px;
   font-size: 21px;
   right: 10px;
-  -webkit-transition: -webkit-transform 0.3s linear;
-  -moz-transition: -moz-transform 0.3s linear;
-  -o-transition: -o-transform 0.3s linear;
+  transition: -webkit-transform 0.3s linear;
   transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
   z-index: 2;
 }
 
 .active #open-search-btn {
-  -moz-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 }
@@ -115,8 +109,6 @@
 
 .wrapper {
   padding-bottom: 10px;
-  min-height: -webkit-calc(100% - 76px);     /* Chrome */
-  min-height: -moz-calc(100% - 76px);     /* Firefox */
   min-height: calc(100% - 76px);     /* native */
 }
 
@@ -156,6 +148,10 @@ h1,h2,h3,h4,h5,
 .btn:focus,
 .btn:hover {
   color: white;
+}
+
+::-moz-selection {
+  background: #f8e1d3
 }
 
 ::selection {
@@ -226,11 +222,7 @@ hr.faild {
 }
 
  .inner p img {
-  max-width: -webkit-calc(100% - 21px);
-  max-width: -moz-calc(100% - 21px);
   max-width: calc(100% - 21px);
-  width: -webkit-calc(100% - 21px);
-  width: -moz-calc(100% - 21px);
   width: calc(100% - 21px);
   height: 100%;
   object-fit: scale-down;
@@ -247,7 +239,9 @@ p {
 }
 
 pre, pre code {
-  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   padding: 0px;
   word-wrap: initial;
   white-space: pre;
